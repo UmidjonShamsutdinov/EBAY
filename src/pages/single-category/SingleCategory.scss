@@ -1,0 +1,99 @@
+.single__category{
+    padding: 16px 12px;
+}
+
+
+.single__category-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 18px 0;
+    border-bottom: 1px solid #E5E5E5;
+    padding-bottom: 24px;
+    >h2{
+        color: #333;
+        font-family: var(--main-f-f);
+        font-size: 24px;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 32px;
+    }   
+    .single__category-content{
+        >img{
+            width: 100%;
+            max-height: 235px;
+            object-fit: cover;
+            object-position: center;
+        }
+        >h3{
+            color: #333;
+            font-family: var(--main-f-f);
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            margin-top: 24px;
+            margin-bottom: 5px;
+            padding-left: 16px;
+        }
+        >p{
+            padding-left: 16px;
+            color: #707070;
+            font-family: var(--main-f-f);
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    } 
+}
+
+
+.single__category-cards{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px 16px;
+    >.single__category-card{
+        display: flex;
+        flex-direction: column;
+        >a{
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px 0;
+            >img{
+                width: 100%;
+                aspect-ratio: 1/1;
+            }
+            >div{
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                >h3{
+                    color: #111820;
+                    font-family: var(--main-f-f);
+                    font-size: 14px;
+                    font-style: italic;
+                    font-weight: 400;
+                    line-height: 18.2px;
+                }
+                >strong{
+                    color: #111820;
+                    font-family: var(--main-f-f);
+                    font-size: 16px;
+                    font-style: italic;
+                    font-weight: 400;
+                    line-height: normal;
+                }
+                >p{
+                    color: #707070;
+                    font-family: var(--main-f-f);
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    margin-top: 58px;
+                }
+            }
+        }
+    }
+}

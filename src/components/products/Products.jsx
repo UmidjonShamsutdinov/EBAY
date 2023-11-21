@@ -39,7 +39,7 @@ const Products = () => {
             console.log(error);
             }
         },[])
-        console.log(state);
+        // console.log(state);
 
   return (
     <div className='products-div'>

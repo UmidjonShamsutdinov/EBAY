@@ -40,7 +40,7 @@ const Products2 = () => {
             console.log(error);
             }
         },[])
-        console.log(state);
+        // console.log(state);
   return (
     <div className='products2'>
         <div className="linking2">
@@ -60,8 +60,8 @@ const Products2 = () => {
             >
                 {
                     state.map(product=>
-                            <SwiperSlide className='swiper_slide2'>
-                                <Link>
+                            <SwiperSlide className='swiper_slide2' key={product.id}>
+                                <Link to={`/single-page?id=${product.id}`}>
                                     <div>
                                         <img src={product.images[0]} alt=""/>
                                         <div className="product__content2">

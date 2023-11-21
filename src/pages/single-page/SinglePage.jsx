@@ -49,7 +49,9 @@ const SinglePage = () => {
             } catch (error) {
             console.log(error);
             }
-        },[])
+        },[setId])
+
+        
         console.log(data);
   return (
     <>
@@ -90,7 +92,7 @@ const SinglePage = () => {
                         </div>
                         <div className="full-information">
                             <h3>Condition: {data.description}</h3>
-                            <p>Product name: <p>{data.title}</p></p>
+                            <p>Product name: {data.title}</p>
                         </div>
                         <div className="product-price">
                             <h3>Price: <strong>US ${data.price}</strong></h3>

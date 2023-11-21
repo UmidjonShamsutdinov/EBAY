@@ -2,7 +2,8 @@ import React, { useEffect, useReducer, useState } from 'react'
 import "./Hero.scss"
 import { apiInstance } from '../../api/api'
 import { FaArrowRight } from "react-icons/fa";
-import { CiPause1, CiPlay1 } from "react-icons/ci";                     
+import { CiPause1, CiPlay1 } from "react-icons/ci"; 
+import noImage from "../../assets/noImage.png"                    
 
 
 
@@ -31,7 +32,7 @@ const reducer = (state, action) =>{
 const Hero = () => {
     const [state, dispatch] = useReducer(reducer,[])
     const [playSwiper, setPlaySwiper] = useState(true)
-
+    const [errorPlaceholder, setErrorPlaceholder] = useState(false)
 
 
     useEffect(()=>{
@@ -51,7 +52,7 @@ const Hero = () => {
         setPlaySwiper(!playSwiper)
     }
 
-
+console.log(state);
 
 
   return (
@@ -69,18 +70,21 @@ const Hero = () => {
                 spaceBetween={30}
                 slidesPerView={3}
                 autoplay={{
-                delay: 3000,
-                disableOnInteraction: false,
+                    delay: 3000,
+                    disableOnInteraction: false,
                 }}                
                 modules={[Autoplay]}
-                className="mySwiper"
-            >
+                className="mySwiper">
                 {
                     state.map(category=>
                         <SwiperSlide key={category.id} className='swiper-card'>
                             <Link to={`/${category.id}`}>
                                 <h2>{category.name.toUpperCase()} <span><FaArrowRight/></span></h2>
-                                <img src={category.image} alt="" />
+                                <img onError={(e,s)=>{
+                                    if(!s){
+                                        setErrorPlaceholder(true)
+                                    }
+                                }} src={category.image} alt="" />
                             </Link>
                         </SwiperSlide>                       
                         )

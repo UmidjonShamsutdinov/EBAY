@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer } from 'react'
 import { apiInstance } from '../../api/api'
 import "./Products.scss"
+import noImage from "../../assets/noImage.png"
 
 
 
@@ -57,7 +58,7 @@ const Products = () => {
                 state.map(product=>
                     <SwiperSlide key={product.id} className='swiper__slide'>
                         <Link to={`/single-page?id=${product.id}`}>
-                            <img src={product.images[0]} alt="" />
+                            <img src={product?.image?.[0].includes("placeimg") ? noImage : product.images[0]} alt="" />
                             <div className="product__content">
                                 <h3 title={product.title}>{product.title.length > 15 ? product.title.slice(0,15)+"..." : product.title}</h3>
                                 <p title={product.description}>{product.description.length > 30 ? product.description.slice(0,30) + "..." : product.description}</p>

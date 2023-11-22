@@ -41,6 +41,23 @@ const SingleCategory = () => {
         console.log(data);
 
 
+
+    const handleDelete = (e)=>{
+        console.log(e.target.dataset.productId)
+        // e.stopPropogation()
+        try {
+            apiInstance.delete(`/categories${id}/products/${e?.target?.dataset?.productId}`)
+            .then(res => {
+                setData(res.data);
+            })
+
+            } catch (error) {
+            console.log(error);
+            }
+        }
+    
+
+
     
   return (
     <div>
@@ -56,18 +73,20 @@ const SingleCategory = () => {
                     </div>
                     <div className="single__category-cards">
                         {
-                            data.map(product=>
+                            data.length > 0 ? data.map(product=>
                                 <div className="single__category-card" key={product.id}>
                                     <Link to={`/single-page?id=${product.id}`}>
                                         <img src={product.images[0]} alt="" />
                                         <div>
                                             <h3 title={product.description}>{product.title}{` "`}{product.description.length > 30 ? product.description.slice(0, 30) + "..." : product.description}{`"`}</h3>
                                             <strong>${product.price}</strong>
+                                            <button data-product-id={product.id} onClick={handleDelete}>delete</button>
                                             <p>SPONSORED</p>
                                         </div>
                                     </Link>
                                 </div>                                
                                 )
+                                : "admin"
                         }
                     </div>
                 </div>

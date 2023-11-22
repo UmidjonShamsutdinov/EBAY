@@ -80,11 +80,7 @@ console.log(state);
                         <SwiperSlide key={category.id} className='swiper-card'>
                             <Link to={`/${category.id}`}>
                                 <h2>{category.name.toUpperCase()} <span><FaArrowRight/></span></h2>
-                                <img onError={(e,s)=>{
-                                    if(!s){
-                                        setErrorPlaceholder(true)
-                                    }
-                                }} src={category.image} alt="" />
+                                <img src={category.image.includes("placeimg") ? noImage : category.image} alt="" />
                             </Link>
                         </SwiperSlide>                       
                         )

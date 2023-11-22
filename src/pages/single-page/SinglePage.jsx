@@ -5,6 +5,7 @@ import { RiMoneyDollarBoxFill } from "react-icons/ri";
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../layout/nav/Navbar'
 import "./SinglePage.scss"
+import noImage from "../../assets/noImage.png"
 
 
 
@@ -46,7 +47,7 @@ const SinglePage = () => {
                 setData(res.data);
             })
 
-            } catch (error) {
+        } catch (error) {
             console.log(error);
             }
         },[setId])
@@ -81,7 +82,7 @@ const SinglePage = () => {
                         >
                             {data?.images?.map((photo, index)=>
                                 <SwiperSlide key={index} className='photos'>
-                                    <img src={photo} alt="photograph"/>                                    
+                                    <img src={photo.includes("placeimg") ? noImage : photo} alt="photograph"/>                                    
                                 </SwiperSlide>
                                 )}
                         </Swiper>

@@ -62,7 +62,7 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="nav__search">
-                <img src={logo} alt="" />
+                <Link to="/"><img src={logo} alt="" /></Link>
                 <form>
                     <select>
                         <option value="">Shop by category</option>

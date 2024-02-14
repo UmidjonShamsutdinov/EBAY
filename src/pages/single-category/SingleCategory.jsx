@@ -9,10 +9,9 @@ import { Link } from 'react-router-dom'
 
 
 const SingleCategory = () => {
-    const [id, setId] = useState(window.location.pathname)
+    const [id] = useState(window.location.pathname)
     const [hero, setHero] = useState([])
     const [data, setData] = useState([])
-    
 
     useEffect(()=>{
         try {
@@ -24,7 +23,7 @@ const SingleCategory = () => {
             } catch (error) {
             console.log(error);
             }
-        },[])
+        },[id])
         console.log(hero);
 
     useEffect(()=>{
@@ -37,18 +36,17 @@ const SingleCategory = () => {
             } catch (error) {
             console.log(error);
             }
-        },[])
+        },[id])
         console.log(data);
 
 
 
-    const handleDelete = (e)=>{
-        console.log(e.target.dataset.productId)
-        // e.stopPropogation()
+    const handleDelete = (id)=>{
         try {
-            apiInstance.delete(`/categories${id}/products/${e?.target?.dataset?.productId}`)
+            apiInstance.delete(`products/${id}`)
             .then(res => {
                 setData(res.data);
+                window.location.reload()
             })
 
             } catch (error) {
@@ -67,7 +65,7 @@ const SingleCategory = () => {
                 <div className="single__category-wrapper">
                     <h2>{hero.name}</h2>
                     <div className="single__category-content">
-                        <img src={hero.image} alt="" />
+                        <img className='banner' src={hero.image} alt="" />
                         <h3>Up to 60% off {hero.name}</h3>
                         <p>Save on AirPods, iPhones, and more.</p>
                     </div>
@@ -75,15 +73,17 @@ const SingleCategory = () => {
                         {
                             data.length > 0 ? data.map(product=>
                                 <div className="single__category-card" key={product.id}>
-                                    <Link to={`/single-page?id=${product.id}`}>
-                                        <img src={product.images[0]} alt="" />
+                                    <Link className='product-card' to={`/single-page?id=${product.id}`}>
+                                        <img src={product.images[0]} alt=""/>
                                         <div>
                                             <h3 title={product.description}>{product.title}{` "`}{product.description.length > 30 ? product.description.slice(0, 30) + "..." : product.description}{`"`}</h3>
                                             <strong>${product.price}</strong>
-                                            <button data-product-id={product.id} onClick={handleDelete}>delete</button>
                                             <p>SPONSORED</p>
                                         </div>
                                     </Link>
+                                            <button onClick={()=>{
+                                                handleDelete(product?.id)
+                                            }}>delete</button>
                                 </div>                                
                                 )
                                 : "admin"

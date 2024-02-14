@@ -68,7 +68,7 @@ console.log(state);
             </div>
             <Swiper
                 spaceBetween={30}
-                slidesPerView={3}
+                slidesPerView={3.5}
                 autoplay={{
                     delay: 3000,
                     disableOnInteraction: false,

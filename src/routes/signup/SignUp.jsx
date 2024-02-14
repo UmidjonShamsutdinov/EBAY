@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import { apiInstance } from '../../api/api'
+import { Link } from 'react-router-dom'
 
 
 
@@ -27,13 +28,16 @@ const SignUp = () => {
 
 
   return (
-    <form onSubmit={handleForm}>
-      <input type="text" placeholder='Your name' ref={nameInp}/>
-      <input type="email" placeholder='Your email' ref={emailInp}/>
-      <input type="password" placeholder='Your Password' ref={passwordInp}/>
-      <input type="url" placeholder='Your avatar' ref={avatarInp}/>
-      <button type='submit'>Submit</button>
-    </form>
+    <div>
+      <Link to="/">Go Home</Link>
+      <form onSubmit={handleForm}>
+        <input type="text" placeholder='Your name' ref={nameInp}/>
+        <input type="email" placeholder='Your email' ref={emailInp}/>
+        <input type="password" placeholder='Your Password' ref={passwordInp}/>
+        <input type="url" placeholder='Your avatar' ref={avatarInp}/>
+        <button type='submit'>Submit</button>
+      </form>
+    </div>
   )
 }
 
